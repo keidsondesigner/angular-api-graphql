@@ -5,7 +5,11 @@
       <p class="page-subtitle">Compartilhe suas ideias e conhecimento com a comunidade</p>
     </div>
 
-    <form class="create-post-form" (ngSubmit)="onSubmit()" #postForm="ngForm">
+    <form
+      class="create-post-form"
+      #postForm="ngForm"
+      (ngSubmit)="onSubmit(postForm)"
+    >
       <div class="form-group">
         <label for="title" class="form-label">Título *</label>
         <input
@@ -71,7 +75,7 @@
         <button
           type="button"
           class="btn btn-secondary"
-          (click)="resetForm()"
+          (click)="resetForm(postForm)"
           [disabled]="isSubmitting">
           Limpar
         </button>
@@ -79,7 +83,7 @@
         <button
           type="submit"
           class="btn btn-primary"
-          [disabled]="!isValidForm() || isSubmitting">
+          [disabled]="!postForm.valid || isSubmitting">
           <span *ngIf="!isSubmitting">Publicar Notícia</span>
           <span *ngIf="isSubmitting" class="loading-text">
             <div class="mini-spinner"></div>

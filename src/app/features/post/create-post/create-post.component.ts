@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,31 +22,33 @@ export class CreatePostComponent {
 
   constructor(private router: Router) {}
 
-  onSubmit() {
-    if (this.isValidForm()) {
+  onSubmit(postForm: NgForm) { //  NgForm para gerenciar o estado atual e a validação do formulário.
+    if (postForm.valid) {
       this.isSubmitting = true;
 
       // Simulando envio para API
       setTimeout(() => {
         console.log('Post criado:', this.post);
+        console.log('Form value:', postForm.value);
+        console.log('Form valid:', postForm.valid);
         this.isSubmitting = false;
         this.router.navigate(['/posts']);
       }, 1500);
     }
   }
 
-  isValidForm(): boolean {
-    return !!(this.post.title.trim() && 
-              this.post.content.trim() && 
-              this.post.author.trim());
-  }
 
-  resetForm() {
+  resetForm(form?: NgForm) {
     this.post = {
       title: '',
       content: '',
       author: '',
       imageUrl: ''
     };
+
+    // Resetar estado do formulário se fornecido
+    if (form) {
+      form.resetForm();
+    }
   }
 }
