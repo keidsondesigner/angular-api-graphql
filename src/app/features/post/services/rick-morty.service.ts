@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { Observable, map } from 'rxjs';
-import { Post } from '../components/post-list/post-list.component';
+import { Post } from '../post-list/post-list.component';
+
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostCardComponent } from '../post-card/post-card.component';
-import { RickMortyService } from '../../services/rick-morty.service';
+import { RickMortyService } from '../services/rick-morty.service';
+
 
 export interface Post {
   id: string;

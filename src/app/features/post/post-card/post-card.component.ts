@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Post } from '../post-list/post-list.component';
-import { TruncatePipe } from '../../pipes/truncate.pipe';
+import { TruncatePipe } from '../../../pipes/truncate.pipe';
 
 @Component({
   selector: 'app-post-card',

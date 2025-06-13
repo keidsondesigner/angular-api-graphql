@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../post-list/post-list.component';
-import { RickMortyService } from '../../services/rick-morty.service';
+import { RickMortyService } from '../services/rick-morty.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -34,7 +34,7 @@ export class PostDetailComponent implements OnInit {
       next: (character) => {
         this.post = character;
         this.loading = false;
-        
+
         if (!this.post) {
           this.router.navigate(['/posts']);
         }

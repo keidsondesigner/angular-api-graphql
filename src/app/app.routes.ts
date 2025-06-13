@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
-import { PostListComponent } from './components/post-list/post-list.component';
-import { PostDetailComponent } from './components/post-detail/post-detail.component';
-import { CreatePostComponent } from './components/create-post/create-post.component';
+
+import { PostDetailComponent } from './features/post/post-detail/post-detail.component';
+import { CreatePostComponent } from './features/post/create-post/create-post.component';
+import { PostListComponent } from './features/post/post-list/post-list.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/posts', pathMatch: 'full' },
