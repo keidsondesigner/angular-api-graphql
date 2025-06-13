@@ -7,13 +7,13 @@
   <div class="post-content">
     <div class="post-meta">
       <span class="author">{{ post.author }}</span>
-      <span class="date">{{ formatDate(post.createdAt) }}</span>
+      <span class="date">{{ post.createdAt | date:'dd MMMM yyyy':'':'pt-BR' }}</span>
     </div>
     
     <h2 class="post-title">{{ post.title }}</h2>
     
     <p class="post-excerpt">
-      {{ truncateContent(post.content) }}
+      {{ post.content | truncate: 150 }}
     </p>
     
     <div class="read-more">

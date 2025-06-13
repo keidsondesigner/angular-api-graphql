@@ -16,7 +16,7 @@
         
         <div class="post-meta">
           <span class="author">Por {{ post.author }}</span>
-          <span class="date">{{ formatDate(post.createdAt) }}</span>
+          <span class="date">{{ post.createdAt | date:'dd MMMM yyyy HH:mm':'':'pt-BR' }}</span>
         </div>
       </div>
 

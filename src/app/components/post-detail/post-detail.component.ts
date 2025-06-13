@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../post-list/post-list.component';
 import { RickMortyService } from '../../services/rick-morty.service';
@@ -7,7 +7,7 @@ import { RickMortyService } from '../../services/rick-morty.service';
 @Component({
   selector: 'app-post-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DatePipe],
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.scss']
 })
@@ -45,16 +45,6 @@ export class PostDetailComponent implements OnInit {
         this.router.navigate(['/posts']);
       }
     });
-  }
-
-  formatDate(date: Date): string {
-    return new Intl.DateTimeFormat('pt-BR', {
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    }).format(date);
   }
 
   goBack() {
