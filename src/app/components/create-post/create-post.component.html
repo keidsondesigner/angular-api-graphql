@@ -1,0 +1,92 @@
+<div class="create-post-container">
+  <div class="container">
+    <div class="header-section">
+      <h1 class="page-title">Criar Nova Notícia</h1>
+      <p class="page-subtitle">Compartilhe suas ideias e conhecimento com a comunidade</p>
+    </div>
+
+    <form class="create-post-form" (ngSubmit)="onSubmit()" #postForm="ngForm">
+      <div class="form-group">
+        <label for="title" class="form-label">Título *</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          class="form-input"
+          [(ngModel)]="post.title"
+          placeholder="Digite o título da notícia"
+          required
+          #titleInput="ngModel">
+        <div class="error-message" *ngIf="titleInput.invalid && titleInput.touched">
+          O título é obrigatório
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="author" class="form-label">Autor *</label>
+        <input
+          type="text"
+          id="author"
+          name="author"
+          class="form-input"
+          [(ngModel)]="post.author"
+          placeholder="Seu nome"
+          required
+          #authorInput="ngModel">
+        <div class="error-message" *ngIf="authorInput.invalid && authorInput.touched">
+          O nome do autor é obrigatório
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="imageUrl" class="form-label">URL da Imagem</label>
+        <input
+          type="url"
+          id="imageUrl"
+          name="imageUrl"
+          class="form-input"
+          [(ngModel)]="post.imageUrl"
+          placeholder="https://exemplo.com/imagem.jpg">
+        <small class="form-help">URL opcional para a imagem de capa da notícia</small>
+      </div>
+
+      <div class="form-group">
+        <label for="content" class="form-label">Conteúdo *</label>
+        <textarea
+          id="content"
+          name="content"
+          class="form-textarea"
+          [(ngModel)]="post.content"
+          placeholder="Escreva o conteúdo da notícia..."
+          rows="12"
+          required
+          #contentInput="ngModel"></textarea>
+        <div class="error-message" *ngIf="contentInput.invalid && contentInput.touched">
+          O conteúdo é obrigatório
+        </div>
+        <small class="form-help">{{ post.content.length }} caracteres</small>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="resetForm()"
+          [disabled]="isSubmitting">
+          Limpar
+        </button>
+        
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!isValidForm() || isSubmitting">
+          <span *ngIf="!isSubmitting">Publicar Notícia</span>
+          <span *ngIf="isSubmitting" class="loading-text">
+            <div class="mini-spinner"></div>
+            Publicando...
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
